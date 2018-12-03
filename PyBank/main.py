@@ -4,8 +4,10 @@ import csv
 bank_path = os.path.join('Resources', 'budget_data.csv')
 
 #create a file for the financial summary
-##financial_analysis_summary = open('financial_analysis.txt', 'a').close()
-    
+financial_analysis_summary = open('financial_analysis.txt', 'w').close()
+
+financial_output_path = os.path.join('financial_analysis.txt')
+
 with open(bank_path, 'r', newline='') as bank_file:
     bank_file = csv.reader(bank_file, delimiter=',')
     
@@ -37,14 +39,33 @@ with open(bank_path, 'r', newline='') as bank_file:
         net_profit += int(each[1])
         
     
-    print("Financial Analysis")
-    print("----------------------------------------------------------")
-    print(f'Total Months: {total_months}')
-    print(f'Total: $ {net_profit}')
-    print(f'Average change: $ {average_change}')
-    print(f'Greatest Increase in Profits: {greatest_inc_month} (${greatest_inc})')
-    print(f'Greatest Decrease in Profits: {greatest_dec_month} (${greatest_dec})')
+    ##How to calculate Average change? What is it asking exactly?
     
+    
+    
+    
+    
+    
+    
+    
+    ##Instead of printing, append into the file I created
+#     print("Financial Analysis")
+#     print("----------------------------------------------------------")
+#     print(f'Total Months: {total_months}')
+#     print(f'Total: $ {net_profit}')
+#     print(f'Average change: $ {average_change}')
+#     print(f'Greatest Increase in Profits: {greatest_inc_month} (${greatest_inc})')
+#     print(f'Greatest Decrease in Profits: {greatest_dec_month} (${greatest_dec})')
+   
+    with open(financial_output_path, 'w') as financial_output:
+        financial_output.write("Financial Analysis\n")
+        financial_output.write("-------------------------------------------------------\n")
+        financial_output.write(f"Total Months: {total_months}\n")
+        financial_output.write(f"Total: ${net_profit}\n")
+        financial_output.write(f"Average Change: ${average_change}\n")
+        financial_output.write(f"Greatest Increase in Profits: {greatest_inc_month} (${greatest_inc})\n")
+        financial_output.write(f"Greatest Decrease in Profits: {greatest_dec_month} (${greatest_dec})\n")
+        
     
     
     
