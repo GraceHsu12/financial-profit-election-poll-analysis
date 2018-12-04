@@ -45,17 +45,13 @@ with open(bank_path, 'r', newline='') as bank_file:
     
     
     
-    
-    
-    
-    ##Instead of printing, append into the file I created
-#     print("Financial Analysis")
-#     print("----------------------------------------------------------")
-#     print(f'Total Months: {total_months}')
-#     print(f'Total: $ {net_profit}')
-#     print(f'Average change: $ {average_change}')
-#     print(f'Greatest Increase in Profits: {greatest_inc_month} (${greatest_inc})')
-#     print(f'Greatest Decrease in Profits: {greatest_dec_month} (${greatest_dec})')
+    print("Financial Analysis")
+    print("----------------------------------------------------------")
+    print(f'Total Months: {total_months}')
+    print(f'Total: $ {net_profit}')
+    print(f'Average change: $ {average_change}')
+    print(f'Greatest Increase in Profits: {greatest_inc_month} (${greatest_inc})')
+    print(f'Greatest Decrease in Profits: {greatest_dec_month} (${greatest_dec})')
    
     with open(financial_output_path, 'w') as financial_output:
         financial_output.write("Financial Analysis\n")
