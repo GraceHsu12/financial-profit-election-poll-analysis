@@ -13,13 +13,10 @@ with open(poll_file_path, "r", newline='') as poll_file:
     file_header = next(poll_file)
     
     poll_data = []
-    voter_ids = []
-    county = []
     candidates = []
     
     for row in poll_file:
         poll_data.append(row)
-        voter_ids.append(row[0])
         candidates.append(row[2])
 
     #finds names of unique candidates that received votes    
