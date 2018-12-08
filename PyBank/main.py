@@ -5,6 +5,7 @@
 
 import os
 import csv
+import datetime
 
 bank_path = os.path.join('Resources', 'budget_data.csv')
 
@@ -28,6 +29,17 @@ with open(bank_path, 'r', newline='') as bank_file:
         monthly_data.append(row)
         month.append(row[0])
         profit.append(row[1])
+
+    formatted_months = []
+
+    # #create for loop to change month list format from yy-mon to Mon-year
+    for each in month:
+        date = each    
+        stripped_date = datetime.datetime.strptime(date, '%b-%y').date()
+        formatted_months.append(stripped_date.strftime('%b-%Y'))
+
+
+
 
     total_months = len(month)
     net_profit = 0
@@ -76,8 +88,8 @@ with open(bank_path, 'r', newline='') as bank_file:
             greatest_dec = current_profit
             greatest_dec_month_index = profit_change.index(each)
 
-    greatest_inc_month = month[greatest_inc_month_index+1]
-    greatest_dec_month = month[greatest_dec_month_index+1]
+    greatest_inc_month = formatted_months[greatest_inc_month_index+1]
+    greatest_dec_month = formatted_months[greatest_dec_month_index+1]
 
     for each in profit:
         net_profit += int(each)
@@ -91,7 +103,8 @@ with open(bank_path, 'r', newline='') as bank_file:
     print(f'Average change: $ {average_change}')
     print(f'Greatest Increase in Profits: {greatest_inc_month} (${greatest_inc})')
     print(f'Greatest Decrease in Profits: {greatest_dec_month} (${greatest_dec})')
-   
+    
+    
     with open(financial_output_path, 'w') as financial_output:
         financial_output.write("Financial Analysis\n")
         financial_output.write("-------------------------------------------------------\n")
