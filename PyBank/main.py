@@ -32,7 +32,7 @@ with open(bank_path, 'r', newline='') as bank_file:
 
     formatted_months = []
 
-    # #create for loop to change month list format from yy-mon to Mon-year
+    # #create for loop to change month list format from mon-yy to Mon-year
     for each in month:
         date = each    
         stripped_date = datetime.datetime.strptime(date, '%b-%y').date()
